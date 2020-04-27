@@ -33,5 +33,8 @@ int main(int argc, char const *argv[])
 
     print_area(area, x, y);
 
+    printf("\n\n");
+    
+    neighbor_decides_dead_or_alive(area, x, y);
     return 0;
 }

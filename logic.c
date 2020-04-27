@@ -38,3 +38,80 @@ void add_dead_cells(int **area, int r, int c){
     area[r][c] = 0;
     return;    
 }
+
+int **neighbor_decides_dead_or_alive(int **area, int row, int column){
+    int neighbor = 0;
+    int **newarea = create_area(row, column);
+    for(int i=0; i< row; i++){
+            for(int j=0; j<column; j++){
+                
+                if(area[i][j] == 1){ 
+                    if(j>0 && area[i][j-1] == 1){
+                        neighbor +=1;
+                    }
+                    if(i>0 && j > 0 && area[i-1][j-1] == 1){
+                        neighbor += 1;   
+                    }
+                    if(row > i+1 && j > 0 && area[i+1][j-1] == 1){
+                        neighbor += 1;   
+                    }
+                    if(i > 0 && area[i-1][j] == 1){
+                        neighbor +=1;   
+                    }
+                    if(i > 0 && column > j+1 && area[i-1][j+1] == 1){
+                        neighbor += 1;  
+                    }
+                    if(column > j+1 && area[i][j+1] == 1){
+                        neighbor += 1;
+                    }
+                    if(row > i+1 && area[i+1][j] == 1){   
+                        neighbor += 1;  
+                    }
+                    if(row > i+1 && column > j+1 && area[i+1][j+1] == 1){
+                        neighbor += 1;
+                    }
+                    if(neighbor < 2 || neighbor > 3){
+                        newarea[i][j] = 0;
+                    }else{
+                        newarea[i][j] = 1;
+                    }
+                }else if(area[i][j] == 0){
+                    if(j>0 && area[i][j-1] == 1){
+                        neighbor +=1; 
+                    }
+                    if(i>0 && j > 0 && area[i-1][j-1] == 1){
+                        neighbor += 1;  
+                    }
+                    if(row > i+1 && column > 0 && area[i+1][j-1] == 1){
+                        neighbor += 1;  
+                    }
+                    if(i > 0 && area[i-1][j] == 1){
+                        neighbor +=1;
+                       
+                    }
+                    if(i > 0 && column > j+1 && area[i-1][j+1] == 1){
+                        neighbor += 1;  
+                    }
+                    if(column > j+1 && area[i][j+1] == 1){
+                        neighbor += 1; 
+                    }
+                    if(row > i+1 && area[i+1][j] == 1){   
+                        neighbor += 1;
+                    }
+                    if(row > i+1 && column > j+1 && area[i+1][j+1] == 1){
+                        neighbor += 1;    
+                    }
+                    if(neighbor == 3){
+                        newarea[i][j] = 1;
+                    }else{
+                        newarea[i][j] = 0;
+                    }
+                }   
+                neighbor = 0;
+            }
+        }
+
+        print_area(newarea, row, column);
+        
+    return newarea;
+}
