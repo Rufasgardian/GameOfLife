@@ -1,5 +1,10 @@
 #include "logic.h"
 
+/*!
+ *\brief Creates new board with given width and height
+ *\param x height of board
+ *\param y width of board
+*/
 int **create_area(int x, int y){
     int **area = (int**)malloc(x * sizeof(int*));
     for (size_t i = 0; i < x; i++)
@@ -17,6 +22,12 @@ int **create_area(int x, int y){
     return area;
 }
 
+/*!
+ *\brief Prints the board with its values
+ *\param area pointer to the board 
+ *\param x height of board
+ *\param y width of board
+*/
 void print_area(int **area, int x, int y){
 
     for (size_t i = 0; i < x; i++)
@@ -29,16 +40,35 @@ void print_area(int **area, int x, int y){
     }
 }
 
+/*!
+ *\brief Changes the value of given position to 1(live cell)
+ *\param area pointer to the board 
+ *\param r given row position
+ *\param c given column position
+*/
 void add_live_cells(int **area, int r, int c){
     area[r][c] = 1;
     return;
 }
 
+/*!
+ *\brief Changes the value of given position to 0(dead cell)
+ *\param area pointer to the board 
+ *\param r given row position
+ *\param c given column position
+*/
 void add_dead_cells(int **area, int r, int c){
     area[r][c] = 0;
     return;    
 }
 
+/*!
+ *\brief Checks each cell to decide it will be dead or alive for the next generation
+ * and returns next generated board
+ *\param area pointer to the board 
+ *\param row height of board
+ *\param column width of board
+*/
 int **neighbor_decides_dead_or_alive(int **area, int row, int column){
     int neighbor = 0;
     int **newarea = create_area(row, column);
@@ -83,8 +113,6 @@ int **neighbor_decides_dead_or_alive(int **area, int row, int column){
                 neighbor = 0;
             }
         }
-
-        print_area(newarea, row, column);
         
     return newarea;
 }
