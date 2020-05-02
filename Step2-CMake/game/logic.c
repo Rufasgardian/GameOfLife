@@ -72,35 +72,85 @@ void add_dead_cells(int **area, int r, int c){
 int **neighbor_decides_dead_or_alive(int **area, int row, int column){
     int neighbor = 0;
     int **newarea = create_area(row, column);
-    for(int i=0; i< row; i++){
-            for(int j=0; j<column; j++){
+    for(int i=0; i < row; i++){
+        for(int j=0; j<column; j++){
+
+                if(j-1 < 0 && i > 0 &&  area[i-1][column-1] == 1){
+                    neighbor += 1;
+                }
+                if(j-1 < 0 && i >= 0 && i+1 < row && area[i+1][column-1] == 1){
+                    neighbor += 1;
+                }
+                if(j-1 < 0 && i >= 0 && area[i][column-1] == 1){
+                    neighbor += 1;
+                }
                 if(j>0 && area[i][j-1] == 1){
-                    neighbor +=1;
+                    neighbor += 1;
                 }
                 if(i>0 && j > 0 && area[i-1][j-1] == 1){
-                    neighbor += 1;   
+                    neighbor += 1;
                 }
                 if(row > i+1 && j > 0 && area[i+1][j-1] == 1){
-                    neighbor += 1;   
+                    neighbor += 1;
                 }
                 if(i > 0 && area[i-1][j] == 1){
-                    neighbor +=1;   
+                    neighbor += 1;
                 }
                 if(i > 0 && column > j+1 && area[i-1][j+1] == 1){
-                    neighbor += 1;  
+                    neighbor += 1;
                 }
                 if(column > j+1 && area[i][j+1] == 1){
                     neighbor += 1;
                 }
                 if(row > i+1 && area[i+1][j] == 1){   
-                    neighbor += 1;  
+                    neighbor += 1;
                 }
                 if(row > i+1 && column > j+1 && area[i+1][j+1] == 1){
                     neighbor += 1;
                 }
+                if(column == j+1 && area[i][0] == 1){
+                    neighbor += 1;
+                }
+                if(i > 0 && column == j+1 && area[i-1][0] == 1){
+                    neighbor += 1;
+                }
+                if(row > i+1 && column == j+1 && area[i+1][0] == 1){
+                    neighbor += 1;
+                }
+                if(row == i+1 && area[0][j] == 1){
+                    neighbor += 1;
+                }
+                if(row == i+1 && j > 0 && area[0][j-1] == 1){
+                    neighbor += 1;
+                }
+                if(row == i+1 && column > j+1 && area[0][j+1] == 1){
+                    neighbor += 1;
+                }
+                if(row == i+1 && column == j+1 && area[0][0] == 1){
+                    neighbor += 1;
+                }
+                if(row == i+1 && j == 0 && area[0][column-1] == 1){
+                    neighbor += 1;
+                }
+                if(i == 0 && area[row-1][j] == 1){
+
+                    neighbor += 1;
+                }
+                if(i == 0 && j > 0 && area[row-1][j-1] == 1){
+                    neighbor += 1;
+                }
+                if(i == 0 && column > j+1 && area[row-1][j+1] == 1){
+                    neighbor += 1;
+                }
+                if(i == 0 && j == 0 && area[row-1][column-1] == 1){
+                    neighbor += 1;
+                }
+                if(i == 0 && column == j+1 && area[row-1][0] == 1){
+                    neighbor += 1;
+                }
 
                 if(area[i][j] == 1){
-                    if(neighbor < 2 || neighbor >3){
+                    if(neighbor < 2 || neighbor > 3){
                         newarea[i][j] = 0;
                     }else{
                         newarea[i][j] = 1;
@@ -110,9 +160,12 @@ int **neighbor_decides_dead_or_alive(int **area, int row, int column){
                         newarea[i][j] = 1;
                     }
                 }
+
                 neighbor = 0;
-            }
+
         }
-        
+    }
+
     return newarea;
+
 }
