@@ -1,6 +1,8 @@
 #include "logic.h"
 
-// clipped game rules
+/*! 
+* Clipped version game rules
+*/
 void clipped_game_rule(int area[][AREA_WIDTH]){
     int neighbor = 0; // neighbor counter
     int newarea[AREA_HEIGHT][AREA_WIDTH];
