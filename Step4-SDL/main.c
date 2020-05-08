@@ -1,6 +1,33 @@
+/*! 
+* \authors Rufat Huseynov and Shirin Shukurov
+* \version 4.0
+* \mainpage The Game Of Life Console Application
+* \section intro_sec Introduction
+* This is the fourth version of Game of Life Application with CMake. 
+* \section rules_sec Rules
+* 1.Any live cell with fewer than two live neighbours dies, as if by underpopulation.\n
+* 2.Any live cell with two or three live neighbours lives on to the next generation.\n
+* 3.Any live cell with more than three live neighbours dies, as if by overpopulation.\n
+* 4.Any dead cell with exactly three live neighbours becomes a live cell, as if by reproduction. 
+* \section compile_sec Compilation
+* Use "make all" command to compile code, then execute the new generated program called "GameOfLife".
+*
+* "make clean" can be used to delete new created object files and GameOfLife executable file
+*
+* "make dist" creates a distribution tar file for this program\n
+* "make cleandist" removes generated tar file 
+*
+* "make doc" creates the necessary documentation files for this program\n
+* "make cleandoc" removes generated documentation files
+* \section usage_sec Usage
+* After executing the program the interactive board will appear on the screen. Using left click of mouse live cells can be adjusted and with right * click dead cells. To start the Application press <b>SPACE BUTTON</b>.
+*/
+
 #include "logic.h"
 
-
+/*!
+ *\brief Main function that starts the program
+*/
 int main(int argc, char const *argv[]){
     
     // Initialise SDL

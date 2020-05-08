@@ -1,6 +1,8 @@
 #include "logic.h"
 
-// circular game rules
+/*! 
+* Circular version game rules
+*/
 void circular_game_rule(int area[][AREA_WIDTH]){
     int neighbor = 0; // counter of neighbors
     int newarea[AREA_HEIGHT][AREA_WIDTH]; // temporary area

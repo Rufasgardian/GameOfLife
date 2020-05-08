@@ -1,5 +1,8 @@
 #include "sdl.h"
 
+/*! 
+* Draws grid
+*/
 void drawGrid(SDL_Renderer *r){
     
     // draw vertical line
@@ -21,6 +24,9 @@ void drawGrid(SDL_Renderer *r){
     }
 }
 
+/*! 
+* Draws the cells
+*/
 void drawCells(SDL_Renderer *r, int a[][AREA_WIDTH]){
     
     SDL_Rect cellRect;
@@ -43,7 +49,9 @@ void drawCells(SDL_Renderer *r, int a[][AREA_WIDTH]){
     }
 }
 
-// creating window
+/*! 
+* Creates window
+*/
 SDL_Window *createWindow(char *title){
     SDL_Window *window = SDL_CreateWindow(
         title,                  
@@ -62,7 +70,9 @@ SDL_Window *createWindow(char *title){
     return window;
 }
 
-// Creating renderer
+/*! 
+* Creates renderer
+*/
 SDL_Renderer *createRenderer(SDL_Window *window){
     SDL_Renderer *renderer = SDL_CreateRenderer(
         window,                     
