@@ -14,7 +14,11 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: 'Packages'
-      run: sudo apt update && sudo apt install libcunit1-dev gcovr && sudo apt-get install libsdl2-dev
+      run: |
+        sudo apt update
+        sudo apt install libcunit1-dev gcovr
+        sudo apt-get install libsdl2-dev
+        sudo add-apt-repository -y "deb http://archive.ubuntu.com/ubuntu
     - name: 'Step 1'
       run: |
         cd Step1-MakeFile
