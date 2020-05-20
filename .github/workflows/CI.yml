@@ -26,4 +26,10 @@ jobs:
         cd BuildCI
         cmake ..
         cmake --build .
-      
+    - name: 'SDL'
+      run: |
+        cd Step4-SDL
+        mkdir BuildCI
+        cd BuildCI
+        cmake ..
+        cmake --build .
