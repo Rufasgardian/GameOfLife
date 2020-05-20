@@ -13,6 +13,10 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+    - name: 'Packages'
+      run: |
+        sudo apt update
+        sudo apt install libcunit1-dev gcovr
     - name: 'Unit Tests'
       run: |
         cd Unit_Tests
