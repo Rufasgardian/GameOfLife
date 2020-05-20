@@ -17,8 +17,7 @@ jobs:
       run: sudo apt update && sudo apt install libcunit1-dev gcovr && sudo apt-get install libsdl2-dev
     - name: 'Step 1'
       run: |
-      	cd Step1-MakeFile
-      	mkdir BuildCI
-      	cd BuildCI
-      	cmake ..
-      	make
+        cd Step1-MakeFile
+        mkdir BuildCI
+        cmake ..
+        make
