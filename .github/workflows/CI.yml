@@ -18,7 +18,4 @@ jobs:
     - name: 'Step 1'
       run: |
         cd Step1-MakeFile
-        mkdir BuildCI
-        cd BuildCI
-        cmake ..
-        make
+        make all
