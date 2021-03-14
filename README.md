@@ -9,5 +9,5 @@ The Game Of Life Application clipped version. Check out the **circular branch** 
 
 
 <p align="center">
-  <img alt="netflix screens" src="https://imgur.com/eKvVa8Y" />
+  <img alt="netflix screens" src="https://i.imgur.com/eKvVa8Y.png"/>
 </p>
