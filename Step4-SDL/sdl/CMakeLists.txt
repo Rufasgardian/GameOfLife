@@ -1,13 +1,17 @@
-cmake_minimum_required(VERSION 3.17)
+cmake_minimum_required(VERSION 3.0)
 
 project(sdl LANGUAGES C)
 
-find_package(SDL2 CONFIG REQUIRED )
 
-add_library(${PROJECT_NAME})
+set(CMAKE_BUILD_TYPE Release)
 
-target_sources(${PROJECT_NAME} PRIVATE sdl.c sdl.h)
+find_package(SDL2 REQUIRED )
+include_directories(${SDL2_INCLUDE_DIRS})
 
-target_include_directories(${PROJECT_NAME} INTERFACE ${CMAKE_CURRENT_SOURCE_DIR})
+add_library(sdl)
+target_sources(sdl PRIVATE sdl.c sdl.h)
+target_include_directories(sdl INTERFACE ${CMAKE_CURRENT_SOURCE_DIR})
+target_link_libraries(sdl PUBLIC ${SDL2_LIBRARIES} game )
 
-target_link_libraries(${PROJECT_NAME} PUBLIC SDL2::SDL2main SDL2::SDL2)
+target_compile_options(sdl PUBLIC "--coverage")
+target_link_options(sdl PUBLIC "--coverage")
